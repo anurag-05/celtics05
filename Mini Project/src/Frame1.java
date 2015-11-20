@@ -16,6 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollBar;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 
 public class Frame1 {
@@ -28,6 +29,7 @@ public class Frame1 {
 	JPanel panel_1,panel_2;
 	private JButton btnBack;
 	private JTextArea Header;
+	JComboBox comboBox;
 
 	/**
 	 * Launch the application.
@@ -95,7 +97,8 @@ public class Frame1 {
 				
 				String gender,year,f_name,row,name,birth;
 				String []array;
-				int flag=0;
+				String disp;
+				int flag=0,max,i=0;
 				
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
@@ -105,6 +108,20 @@ public class Frame1 {
 				
 				gender = textField1.getText();
 				year = textField2.getText();
+				disp=comboBox.getSelectedItem().toString();
+				System.out.println(disp);
+				
+				if(disp.equals("Top 5 Names"))
+				max=5;
+				else if(disp.equals("Top 10 Names"))
+					max=10;
+				else if(disp.equals("Top 20 Names"))
+					max=20;
+				else if(disp.equals("Top 50 Names"))
+					max=50;
+				else
+					max=99999;
+					
 				
 				if(gender.toLowerCase().equals("male") || gender.toLowerCase().equals("female"))
 				{
@@ -137,7 +154,7 @@ public class Frame1 {
 						read.next();
 						read.next();
 						
-						while(read.hasNext())
+						while(read.hasNext() && i<=max)
 						{
 							row=read.next();
 							array=row.split(",");
@@ -150,6 +167,7 @@ public class Frame1 {
 							textArea.append("  No of Births ->" );
 							textArea.append(birth);
 							textArea.append("\n");
+							i++;
 							
 						}
 						
@@ -164,8 +182,20 @@ public class Frame1 {
 				
 			}
 		});
-		btnFind.setBounds(294, 247, 90, 25);
+		btnFind.setBounds(302, 342, 90, 25);
 		panel_1.add(btnFind);
+		
+		JLabel lblDisplay = new JLabel("Display :");
+		lblDisplay.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblDisplay.setBounds(198, 243, 56, 16);
+		panel_1.add(lblDisplay);
+		
+		String[] Display = {"Top 5 Names","Top 10 Names","Top 20 Names","Top 50 Names","All Names"};
+		
+		
+		comboBox = new JComboBox(Display);
+		comboBox.setBounds(294, 241, 116, 22);
+		panel_1.add(comboBox);
 		
 		panel_2 = new JPanel();
 		frame.getContentPane().add(panel_2, "name_12248119307610");
@@ -197,4 +227,3 @@ public class Frame1 {
 		
 	}
 }
-
