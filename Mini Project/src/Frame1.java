@@ -21,7 +21,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JSlider;
 
 
-public class Frame5 {
+public class Frame1 {
 
 	JFrame frame;
 	JTextField textField2;
@@ -40,7 +40,7 @@ public class Frame5 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Frame5 window = new Frame5();
+					Frame1 window = new Frame1();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,7 +52,7 @@ public class Frame5 {
 	/**
 	 * Create the application.
 	 */
-	public Frame5() {
+	public Frame1() {
 		initialize();
 	}
 
